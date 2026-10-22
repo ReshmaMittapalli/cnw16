@@ -1,0 +1,19 @@
+Network Simulation using C
+--------------------------
+TCP and UDP Traffic Simulation
+
+Network topology: n0, n1 -> n2 -> n3
+Bottleneck bandwidth: 1 Mbps
+Queue limit: 10 packets
+
+Packet 1: TCP packet sent
+Packet 2: UDP packet sent
+...
+Packet dropped: Bottleneck queue full
+
+--- Simulation Results ---
+TCP packets generated: [varies]
+UDP packets generated: [varies]
+Total packets generated: 100
+Packets dropped: 6
+Packets received: 94
