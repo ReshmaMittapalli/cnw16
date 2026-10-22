@@ -1,0 +1,46 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int i, tcpPackets = 0, udpPackets = 0;
+    int droppedPackets = 0;
+    int queueLimit = 10;
+
+    printf("Network Simulation using C\n");
+    printf("--------------------------\n");
+    printf("TCP and UDP Traffic Simulation\n\n");
+
+    printf("Network topology: n0, n1 -> n2 -> n3\n");
+    printf("Bottleneck bandwidth: 1 Mbps\n");
+    printf("Queue limit: %d packets\n\n", queueLimit);
+
+    srand(10);
+
+    for (i = 1; i <= 100; i++) {
+        int packetType = rand() % 2;
+
+        if (packetType == 0) {
+            tcpPackets++;
+            printf("Packet %d: TCP packet sent\n", i);
+        } else {
+            udpPackets++;
+            printf("Packet %d: UDP packet sent\n", i);
+        }
+
+        if (i % 15 == 0) {
+            droppedPackets++;
+            printf("Packet dropped: Bottleneck queue full\n");
+        }
+    }
+
+    printf("\n--- Simulation Results ---\n");
+    printf("TCP packets generated: %d\n", tcpPackets);
+    printf("UDP packets generated: %d\n", udpPackets);
+    printf("Total packets generated: %d\n", tcpPackets + udpPackets);
+    printf("Packets dropped: %d\n", droppedPackets);
+    printf("Packets received: %d\n",
+           tcpPackets + udpPackets - droppedPackets);
+
+    return 0;
+}
